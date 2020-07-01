@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>Request Payment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1>Request a payment</h1>
+        <h:form>
+            <h:outputLabel for="email" value="*Email address:"/>
+            <h:inputText id ="email" value="#{transactionBean.senderEmail}" title="Enter Sender Email" required="true" requiredMessage="Mandatory Field"/>
+            <br/>
+            <h:outputLabel for="ammount" value="*Amount to recieve:"/>
+            <h:inputText id ="ammount" value="#{transactionBean.value}" title="Amount" required="true" requiredMessage="Mandatory Field"/>
+            #{loginBean.currency}
+            <br/>
+            <h:commandButton id="send" type="submit" value="Request Payment" action="#{transactionBean.requestPayment()}" title="Send money"/>
+            <br/>
+            <h:outputText value="#{transactionBean.returnMessage}" />
+            <br/>
+            <h:link value="Back" outcome="#{loginBean.accountPage}"/>
+        </h:form>
+    </body>
+</html>
